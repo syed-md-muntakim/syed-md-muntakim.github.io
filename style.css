@@ -1,0 +1,426 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* color palette */
+    --primary-light: #f5f9f5;
+    --secondary-light: #e8f5e9;
+    --accent-green: #2e7d32;
+    --accent-olive: #689f38;
+    --text-dark: #1b5e20;
+    --text-muted: #558b2f;
+    --card-bg: #ffffff;
+    --border-color: #c5e1a5;
+    --hover-bg: #f1f8e9;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Left Sidebar - Fixed */
+.sidebar {
+    width: 30%;
+    min-width: 300px;
+    background: linear-gradient(180deg, var(--secondary-light) 0%, var(--primary-light) 100%);
+    border-right: 2px solid var(--border-color);
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    box-shadow: 4px 0 15px rgba(46, 125, 50, 0.1);
+    overflow-y: auto;
+}
+
+.profile-pic {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 4px solid var(--accent-green);
+    object-fit: cover;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 20px rgba(46, 125, 50, 0.2);
+    display: block;
+}
+
+.name {
+    font-family: Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    color: var(--accent-green);
+}
+
+.tagline {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.about-me {
+    text-align: center;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.contact-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contact-link {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.contact-link:hover {
+    transform: translateY(-5px) scale(1.1);
+    background: var(--accent-green);
+    border-color: var(--accent-green);
+    box-shadow: 0 8px 15px rgba(46, 125, 50, 0.3);
+}
+
+/* Right Content - Scrollable */
+.content {
+    margin-left: 30%;
+    width: 70%;
+    padding: 3rem;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+.section {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-family: Georgia, serif;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--accent-green);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.section-title::before {
+    content: '';
+    width: 50px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-green), transparent);
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(46, 125, 50, 0.1);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--accent-green), var(--accent-olive));
+    transform: scaleY(0);
+    transition: transform 0.4s ease;
+}
+
+.card:hover {
+    transform: translateX(10px) scale(1.02);
+    box-shadow: -8px 8px 20px rgba(46, 125, 50, 0.15);
+    border-color: var(--accent-green);
+}
+
+.card:hover::before {
+    transform: scaleY(1);
+}
+
+.card-title {
+    font-family: Georgia, serif;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.card-subtitle {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(410px, 1fr));
+    gap: 1rem;
+}
+
+.skill-item {
+    background: var(--hover-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.skill-item:hover {
+    background: var(--secondary-light);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(46, 125, 50, 0.15);
+}
+
+.skill-stars {
+    color: var(--accent-olive);
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+.project-link {
+    color: var(--accent-green);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.project-link:hover {
+    color: var(--accent-olive);
+    text-decoration: underline;
+}
+
+.description-list {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.description-list li {
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.description-list li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--accent-green);
+    font-weight: bold;
+}
+
+.education-item {
+    margin-bottom: 2.5rem;
+}
+
+.education-item:last-child {
+    margin-bottom: 0;
+}
+
+.interests-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.interest-tag {
+    background: linear-gradient(135deg, var(--accent-olive), var(--accent-green));
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.interest-tag:hover {
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+}
+
+/* Scrollbar Styling */
+.content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.content::-webkit-scrollbar-track {
+    background: var(--primary-light);
+}
+
+.content::-webkit-scrollbar-thumb {
+    background: var(--accent-green);
+    border-radius: 5px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-olive);
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: var(--secondary-light);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: var(--accent-green);
+    border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 30%;
+        min-width: 250px;
+        padding: 2rem 1rem;
+    }
+    
+    .content {
+        margin-left: 30%;
+        width: 70%;
+        padding: 2rem;
+    }
+
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        position: relative;
+        height: auto;
+        min-height: auto;
+        padding: 2rem 1rem;
+        border-right: none;
+        border-bottom: 2px solid var(--border-color);
+    }
+    
+    .content {
+        margin-left: 0;
+        width: 100%;
+        padding: 2rem 1rem;
+        height: auto;
+    }
+
+    .profile-pic {
+        width: 140px;
+        height: 140px;
+        margin-bottom: 1.5rem;
+    }
+
+    .name {
+        font-size: 1.75rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card:hover {
+        transform: scale(1.02);
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        padding: 1.5rem 1rem;
+    }
+
+    .content {
+        padding: 1.5rem 1rem;
+    }
+
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+
+    .name {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+    }
+
+    .contact-link {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+}
